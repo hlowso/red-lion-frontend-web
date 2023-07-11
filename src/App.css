@@ -1,0 +1,38 @@
+body {
+  background-color: #f9f9f9;
+  margin-top: 90px;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.tooltip.show {
+  opacity: unset;
+}
+
+.accordion,
+.accordion-item:first-child,
+.accordion-button {
+  border-radius: 5px 5px 0% 0% !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: unset;
+}
+
+.inventory .col {
+  padding: 0;
+}
+
+.vendor {
+  position: fixed;
+  top: 15vh;
+  left: 15vw;
+  min-width: 520px;
+  z-index: 2;
+}
