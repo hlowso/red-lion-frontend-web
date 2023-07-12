@@ -39,6 +39,9 @@ const components = {
       {children}
     </Card>
   ),
+  CardHeader: ({ children, ...props }: UI.CardHeaderProps) => (
+    <Card.Header {...props}>{children}</Card.Header>
+  ),
   Row: ({ children, ...props }: UI.RowProps) => (
     <Row {...props}>{children}</Row>
   ),
@@ -95,7 +98,9 @@ const components = {
     <Badge {...props}>{children}</Badge>
   ),
   Modal: ({ children, title, ...props }: UI.ModalProps) => (
-    <Modal {...props}>{children}</Modal>
+    <Modal {...props} animation={false}>
+      {children}
+    </Modal>
   ),
   ModalHeader: ({ children, ...props }: UI.ModalHeaderProps) => (
     <Modal.Header {...props} closeButton>
