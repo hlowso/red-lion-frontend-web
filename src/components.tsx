@@ -23,6 +23,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Color } from "react-bootstrap/esm/types";
 import Marked from "marked-react";
+import FormSelect from "react-bootstrap/FormSelect";
 
 const components = {
   Div: ({ children, ...props }: UI.DivProps) => (
@@ -32,7 +33,9 @@ const components = {
     <span {...props}>{children}</span>
   ),
   P: ({ children, ...props }: UI.PProps) => <p {...props}>{children}</p>,
-  Strong: ({ children }: UI.StrongProps) => <strong>{children}</strong>,
+  Strong: ({ children, ...props }: UI.StrongProps) => (
+    <strong {...props}>{children}</strong>
+  ),
   Image: (props: UI.ImageProps) => <Image {...props} rounded />,
   Card: ({ children, text, ...props }: UI.CardProps) => (
     <Card text={text as Color} {...props}>
@@ -116,12 +119,21 @@ const components = {
   InputGroup: ({ children, ...props }: UI.InputGroupProps) => (
     <InputGroup {...props}>{children}</InputGroup>
   ),
+  InputGroupText: ({ children, ...props }: UI.InputGroupTextProps) => (
+    <InputGroup.Text {...props}>{children}</InputGroup.Text>
+  ),
   FormControl: ({ children, ...props }: UI.FormControlProps) => (
     <FormControl {...props}>{children}</FormControl>
   ),
+  FormSelect: ({ children, ...props }: UI.FormSelectProps) => (
+    <FormSelect {...props}>{children}</FormSelect>
+  ),
+  FormSelectOption: ({ children, ...props }: UI.FormSelectOptionProps) => (
+    <option {...props}>{children}</option>
+  ),
   Icon: ({ name, size, ...props }: UI.IconProps) => {
     const BootstrapIcon = icons[name as keyof typeof icons];
-    return <BootstrapIcon {...props} />;
+    return BootstrapIcon ? <BootstrapIcon {...props} /> : null;
   },
   OverlayTrigger: ({ children, ...props }: UI.OverlayTriggerProps) => (
     <OverlayTrigger {...props} delay={{ show: 0, hide: 0 }} placement="right">
