@@ -31,6 +31,12 @@ body {
   background-color: unset;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: none !important;
+}
+
 .inventory .col {
   padding: 0;
 }
