@@ -24,6 +24,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Color } from "react-bootstrap/esm/types";
 import Marked from "marked-react";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -58,6 +59,12 @@ const components = {
   Link: ({ children, ...props }: UI.LinkProps) => <a {...props}>{children}</a>,
   Navbar: ({ children, ...props }: UI.NavbarProps) => (
     <Navbar {...props}>{children}</Navbar>
+  ),
+  NavbarCollapse: ({ children, ...props }: UI.NavbarCollapseProps) => (
+    <Navbar.Collapse {...props}>{children}</Navbar.Collapse>
+  ),
+  NavbarBrand: ({ children, ...props }: UI.NavbarBrandProps) => (
+    <Navbar.Brand {...props}>{children}</Navbar.Brand>
   ),
   ButtonGroup: ({ children, ...props }: UI.ButtonGroupProps) => (
     <ButtonGroup {...props}>{children}</ButtonGroup>
