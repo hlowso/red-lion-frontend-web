@@ -3,8 +3,9 @@ body {
   margin-top: 90px;
 }
 
-.navbar {
-  padding: 0;
+.list-nav {
+  width: 200px;
+  height: 100vh;
 }
 
 .tooltip.show {
@@ -17,8 +18,13 @@ body {
   border-radius: 5px 5px 0% 0% !important;
 }
 
+.accordion-button {
+  border-bottom: solid 1px;
+}
+
 .accordion-button:focus {
   box-shadow: none;
+  border-color: #ddd;
 }
 
 .accordion-button:not(.collapsed) {
