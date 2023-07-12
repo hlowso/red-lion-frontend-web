@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import ReactDOM from "react-dom/client";
 import { Contexts, UI, LandscapeApp } from "frontend-common";
 import * as icons from "react-bootstrap-icons";
@@ -23,6 +23,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Color } from "react-bootstrap/esm/types";
+import Marked from "marked-react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -83,6 +84,12 @@ const components = {
       <AccordionItem eventKey="0">{children}</AccordionItem>
     </Accordion>
   ),
+  AccordionHeader: ({ children }: UI.AccordionHeaderProps) => (
+    <Accordion.Header>{children}</Accordion.Header>
+  ),
+  AccordionBody: ({ children }: UI.AccordionBodyProps) => (
+    <Accordion.Body>{children}</Accordion.Body>
+  ),
   Badge: ({ children, ...props }: UI.BadgeProps) => (
     <Badge {...props}>{children}</Badge>
   ),
@@ -106,15 +113,16 @@ const components = {
   },
   OverlayTrigger: ({ children, ...props }: UI.OverlayTriggerProps) => (
     <OverlayTrigger {...props} delay={{ show: 0, hide: 0 }} placement="right">
-      {children as any}
+      <div>{children}</div>
     </OverlayTrigger>
   ),
-  Tooltip: ({ children, ...props }: UI.TooltipProps) => (
-    <Tooltip {...props}>{children}</Tooltip>
-  ),
+  Tooltip: forwardRef(({ children, ...props }: UI.TooltipProps, ref) => (
+    <Tooltip ref={ref as any} {...props}>
+      {children}
+    </Tooltip>
+  )) as any,
+  Marked: ({ children }: UI.MarkedProps) => <Marked>{children}</Marked>,
 };
-
-console.log("PENV", process.env.REACT_APP_SERVER_URL);
 
 root.render(
   <React.StrictMode>
