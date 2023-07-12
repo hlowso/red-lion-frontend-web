@@ -107,6 +107,12 @@ const components = {
       <Modal.Title>{children}</Modal.Title>
     </Modal.Header>
   ),
+  ModalBody: ({ children, ...props }: UI.ModalBodyProps) => (
+    <Modal.Body {...props}>{children}</Modal.Body>
+  ),
+  ModalFooter: ({ children, ...props }: UI.ModalFooterProps) => (
+    <Modal.Footer {...props}>{children}</Modal.Footer>
+  ),
   InputGroup: ({ children, ...props }: UI.InputGroupProps) => (
     <InputGroup {...props}>{children}</InputGroup>
   ),
@@ -126,7 +132,7 @@ const components = {
     <Tooltip ref={ref as any} {...props}>
       {children}
     </Tooltip>
-  )) as any,
+  )) as (props: UI.TooltipProps) => JSX.Element,
   Marked: ({ children }: UI.MarkedProps) => <Marked>{children}</Marked>,
 };
 
