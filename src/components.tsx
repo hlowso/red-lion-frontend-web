@@ -45,6 +45,12 @@ const components = {
   CardHeader: ({ children, ...props }: UI.CardHeaderProps) => (
     <Card.Header {...props}>{children}</Card.Header>
   ),
+  CardBody: ({ children, ...props }: UI.CardBodyProps) => (
+    <Card.Body {...props}>{children}</Card.Body>
+  ),
+  CardTitle: ({ children, ...props }: UI.CardTitleProps) => (
+    <Card.Title {...props}>{children}</Card.Title>
+  ),
   Row: ({ children, ...props }: UI.RowProps) => (
     <Row {...props}>{children}</Row>
   ),
@@ -82,6 +88,9 @@ const components = {
     <Toast {...props} show delay={7000} autohide>
       {children}
     </Toast>
+  ),
+  ToastHeader: ({ children, ...props }: UI.ToastHeaderProps) => (
+    <Toast.Header {...props}>{children}</Toast.Header>
   ),
   ToastContainer: ({ children, ...props }: UI.ToastContainerProps) => (
     <ToastContainer {...props}>{children}</ToastContainer>
@@ -141,7 +150,7 @@ const components = {
     </OverlayTrigger>
   ),
   Tooltip: forwardRef(({ children, ...props }: UI.TooltipProps, ref) => (
-    <Tooltip ref={ref as any} {...props}>
+    <Tooltip ref={ref as React.Ref<HTMLDivElement>} {...props}>
       {children}
     </Tooltip>
   )) as (props: UI.TooltipProps) => JSX.Element,
