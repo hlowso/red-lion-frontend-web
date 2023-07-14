@@ -57,8 +57,13 @@ const components = {
   Col: ({ children, ...props }: UI.ColProps) => (
     <Col {...props}>{children}</Col>
   ),
-  Spinner: ({ small }: UI.SpinnerProps) => (
-    <Spinner animation="border" role="status" size={small ? "sm" : undefined}>
+  Spinner: ({ small, ...props }: UI.SpinnerProps) => (
+    <Spinner
+      animation="border"
+      role="status"
+      size={small ? "sm" : undefined}
+      {...props}
+    >
       <span className="visually-hidden">Loading...</span>
     </Spinner>
   ),
