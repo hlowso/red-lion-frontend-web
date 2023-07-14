@@ -146,7 +146,7 @@ const components = {
     <option {...props}>{children}</option>
   ),
   Icon: ({ name, size, ...props }: UI.IconProps) => {
-    const BootstrapIcon = icons[name as keyof typeof icons];
+    const BootstrapIcon = icons[name as keyof typeof icons] || "Question";
     return BootstrapIcon ? <BootstrapIcon {...props} /> : null;
   },
   OverlayTrigger: ({ children, ...props }: UI.OverlayTriggerProps) => (
