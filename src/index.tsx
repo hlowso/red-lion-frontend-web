@@ -11,16 +11,14 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Contexts.RequestsProvider
+    <Contexts.FrontendProvider
+      serverUrl={process.env.REACT_APP_SERVER_URL!}
       apiBaseUrl={
         process.env.REACT_APP_SERVER_URL! + process.env.REACT_APP_API_BASE_URL!
       }
+      components={components}
     >
-      <Contexts.SocketProvider serverUrl={process.env.REACT_APP_SERVER_URL!}>
-        <Contexts.UIProvider components={components}>
-          <Wrapper />
-        </Contexts.UIProvider>
-      </Contexts.SocketProvider>
-    </Contexts.RequestsProvider>
+      <Wrapper />
+    </Contexts.FrontendProvider>
   </React.StrictMode>
 );
