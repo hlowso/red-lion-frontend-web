@@ -69,11 +69,16 @@ const components = {
     </Spinner>
   ),
   Link: ({ children, ...props }: UI.LinkProps) => <a {...props}>{children}</a>,
-  Navbar: ({ children, ...props }: UI.NavbarProps) => (
+  Navbar: ({ children, style, ...props }: UI.NavbarProps) => (
     <Navbar
       {...props}
-      bg={process.env.REACT_APP_ENV === "dev" ? "danger" : "dark"}
+      bg={process.env.NODE_ENV === "production" ? "dark" : undefined}
       data-bs-theme="dark"
+      style={{
+        ...(style || {}),
+        backgroundColor:
+          process.env.NODE_ENV === "development" ? "#013220" : undefined,
+      }}
     >
       {children}
     </Navbar>
