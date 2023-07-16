@@ -24,6 +24,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { Color } from "react-bootstrap/esm/types";
 import Marked from "marked-react";
 import FormSelect from "react-bootstrap/FormSelect";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const components = {
   Div: ({ children, ...props }: UI.DivProps) => (
@@ -69,7 +70,13 @@ const components = {
   ),
   Link: ({ children, ...props }: UI.LinkProps) => <a {...props}>{children}</a>,
   Navbar: ({ children, ...props }: UI.NavbarProps) => (
-    <Navbar {...props}>{children}</Navbar>
+    <Navbar
+      {...props}
+      bg={process.env.REACT_APP_ENV === "dev" ? "danger" : "dark"}
+      data-bs-theme="dark"
+    >
+      {children}
+    </Navbar>
   ),
   NavbarCollapse: ({ children, ...props }: UI.NavbarCollapseProps) => (
     <Navbar.Collapse {...props}>{children}</Navbar.Collapse>
@@ -149,8 +156,16 @@ const components = {
     const BootstrapIcon = icons[name as keyof typeof icons] || "Question";
     return BootstrapIcon ? <BootstrapIcon {...props} /> : null;
   },
-  OverlayTrigger: ({ children, ...props }: UI.OverlayTriggerProps) => (
-    <OverlayTrigger {...props} delay={{ show: 0, hide: 0 }} placement="right">
+  OverlayTrigger: ({
+    children,
+    placement,
+    ...props
+  }: UI.OverlayTriggerProps) => (
+    <OverlayTrigger
+      {...props}
+      delay={{ show: 0, hide: 0 }}
+      placement={placement || "right"}
+    >
       <div>{children}</div>
     </OverlayTrigger>
   ),
@@ -160,6 +175,18 @@ const components = {
     </Tooltip>
   )) as (props: UI.TooltipProps) => JSX.Element,
   Marked: ({ children }: UI.MarkedProps) => <Marked>{children}</Marked>,
+  ProgressBar: (props: UI.ProgressBarProps) => (
+    <ProgressBar
+      {...props}
+      striped={props.now >= 80}
+      animated={props.now >= 80}
+      className={
+        props.now >= 100
+          ? (props.className || "") + " target-met"
+          : props.className
+      }
+    />
+  ),
 };
 
 export default components;
