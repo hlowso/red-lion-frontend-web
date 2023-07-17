@@ -1,23 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { App } from "frontend-common";
+import React, { useState } from "react";
+import { Contexts, App } from "frontend-common";
+import { useEffect } from "react";
+import components from "./components";
+
+type Orientation = "landscape" | "portrait";
 
 const vw = () =>
   Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 const vh = () =>
   Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-const getVersion = () => (vw() >= vh() ? "landscape" : "portrait");
+const getOrientation = (): Orientation =>
+  vw() >= vh() ? "landscape" : "portrait";
 
 const Wrapper = () => {
-  const [version, setVersion] = useState<"landscape" | "portrait">(
-    getVersion()
-  );
-
+  const [orientation, setOrientation] = useState<Orientation>(getOrientation());
   useEffect(() => {
-    const update = () => setVersion(getVersion());
+    const update = () => setOrientation(getOrientation());
     window.addEventListener("resize", update);
+
+    return window.removeEventListener("resize", update);
   });
 
-  return <App version={version} />;
+  return (
+    <React.StrictMode>
+      <Contexts.FrontendProvider
+        serverUrl={process.env.REACT_APP_SERVER_URL!}
+        apiBaseUrl={
+          process.env.REACT_APP_SERVER_URL! +
+          process.env.REACT_APP_API_BASE_URL!
+        }
+        components={components}
+        orientation={orientation}
+      >
+        <App />
+      </Contexts.FrontendProvider>
+    </React.StrictMode>
+  );
 };
 
 export default Wrapper;
