@@ -18,7 +18,7 @@ const Wrapper = () => {
     const update = () => setOrientation(getOrientation());
     window.addEventListener("resize", update);
 
-    return window.removeEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   });
 
   return (
