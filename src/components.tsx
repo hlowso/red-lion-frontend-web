@@ -24,6 +24,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { Color } from "react-bootstrap/esm/types";
 import Marked from "marked-react";
 import FormSelect from "react-bootstrap/FormSelect";
+import FormCheck from "react-bootstrap/FormCheck";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 const components = {
@@ -156,6 +157,9 @@ const components = {
   ),
   FormSelectOption: ({ children, ...props }: UI.FormSelectOptionProps) => (
     <option {...props}>{children}</option>
+  ),
+  FormCheck: ({ ...props }: UI.FormCheckProps) => (
+    <FormCheck {...props} type="checkbox" />
   ),
   Icon: ({ name, size, ...props }: UI.IconProps) => {
     const BootstrapIcon = icons[name as keyof typeof icons] || "Question";
