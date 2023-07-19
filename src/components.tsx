@@ -1,6 +1,8 @@
 import React, { forwardRef } from "react";
 import { UI } from "frontend-common";
 import * as icons from "react-bootstrap-icons";
+import cn from "classnames";
+
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -184,16 +186,21 @@ const components = {
     </Tooltip>
   )) as (props: UI.TooltipProps) => JSX.Element,
   Marked: ({ children }: UI.MarkedProps) => <Marked>{children}</Marked>,
-  ProgressBar: (props: UI.ProgressBarProps) => (
+  ProgressBar: ({
+    progress,
+    animated,
+    glowing,
+    color,
+    className,
+    ...props
+  }: UI.ProgressBarProps) => (
     <ProgressBar
       {...props}
-      striped={props.now >= 80}
-      animated={props.now >= 80}
-      className={
-        props.now >= 100
-          ? (props.className || "") + " target-met"
-          : props.className
-      }
+      now={progress}
+      striped={glowing}
+      animated={progress >= 100}
+      variant={color}
+      className={cn(className, { aura: animated, glowing }, color)}
     />
   ),
 };
