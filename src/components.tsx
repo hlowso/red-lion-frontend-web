@@ -170,16 +170,20 @@ const components = {
   OverlayTrigger: ({
     children,
     placement,
+    disabled,
     ...props
-  }: UI.OverlayTriggerProps) => (
-    <OverlayTrigger
-      {...props}
-      delay={{ show: 0, hide: 0 }}
-      placement={placement || "right"}
-    >
+  }: UI.OverlayTriggerProps) =>
+    disabled ? (
       <div>{children}</div>
-    </OverlayTrigger>
-  ),
+    ) : (
+      <OverlayTrigger
+        {...props}
+        delay={{ show: 0, hide: 0 }}
+        placement={placement || "right"}
+      >
+        <div>{children}</div>
+      </OverlayTrigger>
+    ),
   Tooltip: forwardRef(({ children, ...props }: UI.TooltipProps, ref) => (
     <Tooltip ref={ref as React.Ref<HTMLDivElement>} {...props}>
       {children}
