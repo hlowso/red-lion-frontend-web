@@ -164,7 +164,7 @@ const components = {
     <FormCheck {...props} type="checkbox" />
   ),
   Icon: ({ name, size, ...props }: UI.IconProps) => {
-    const BootstrapIcon = icons[name as keyof typeof icons] || "Question";
+    const BootstrapIcon = icons[(name as keyof typeof icons) || "Question"];
     return BootstrapIcon ? <BootstrapIcon {...props} /> : null;
   },
   OverlayTrigger: ({
