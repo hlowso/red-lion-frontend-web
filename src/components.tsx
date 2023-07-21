@@ -163,7 +163,7 @@ const components = {
   FormCheck: ({ ...props }: UI.FormCheckProps) => (
     <FormCheck {...props} type="checkbox" />
   ),
-  Icon: ({ name, size, ...props }: UI.IconProps) => {
+  Icon: ({ name, ...props }: UI.IconProps) => {
     const BootstrapIcon = icons[(name as keyof typeof icons) || "Question"];
     return BootstrapIcon ? <BootstrapIcon {...props} /> : null;
   },
