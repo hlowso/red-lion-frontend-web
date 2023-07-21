@@ -192,19 +192,18 @@ const components = {
   Marked: ({ children }: UI.MarkedProps) => <Marked>{children}</Marked>,
   ProgressBar: ({
     progress,
-    animated,
-    glowing,
     color,
+    zone,
     className,
     ...props
   }: UI.ProgressBarProps) => (
     <ProgressBar
       {...props}
       now={progress}
-      striped={glowing}
+      striped={zone === "glory"}
       animated={progress >= 100}
       variant={color}
-      className={cn(className, { aura: animated, glowing }, color)}
+      className={cn(className, zone, color)}
     />
   ),
 };
