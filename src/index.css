@@ -2,6 +2,7 @@ html {
   --blue-glow: rgba(13, 110, 253, 0.7);
   --cyan-glow: rgba(13, 202, 240, 1);
   --gold-glow: rgba(255, 193, 7, 1);
+  --danger-glow: rgba(217, 83, 79, 0.7);
 }
 
 body {
@@ -55,31 +56,47 @@ select:focus {
   z-index: 2;
 }
 
-.progress.aura.primary {
-  animation: aura-blue 2s infinite;
+.progress.danger {
+  animation: danger 2s infinite;
 }
 
-.progress.glowing.primary {
-  animation: glowing-blue 2s infinite;
+.progress.success.primary {
+  animation: success-blue 2s infinite;
 }
 
-.progress.aura.info {
-  animation: aura-cyan 2s infinite;
+.progress.glory.primary {
+  animation: glory-blue 2s infinite;
 }
 
-.progress.glowing.info {
-  animation: glowing-cyan 2s infinite;
+.progress.success.info {
+  animation: success-cyan 2s infinite;
 }
 
-.progress.aura.warning {
-  animation: aura-gold 2s infinite;
+.progress.glory.info {
+  animation: glory-cyan 2s infinite;
 }
 
-.progress.glowing.warning {
-  animation: glowing-gold 2s infinite;
+.progress.success.warning {
+  animation: success-gold 2s infinite;
 }
 
-@keyframes aura-blue {
+.progress.glory.warning {
+  animation: glory-gold 2s infinite;
+}
+
+@keyframes danger {
+  0% {
+    box-shadow: 0 0 0 0 var(--danger-glow);
+  }
+  50% {
+    box-shadow: 0 0 10px 10px var(--danger-glow);
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--danger-glow);
+  }
+}
+
+@keyframes success-blue {
   0% {
     box-shadow: 0 0 1px 1px var(--blue-glow);
   }
@@ -91,7 +108,7 @@ select:focus {
   }
 }
 
-@keyframes glowing-blue {
+@keyframes glory-blue {
   0% {
     box-shadow: 0 0 0 0 var(--blue-glow);
   }
@@ -103,7 +120,7 @@ select:focus {
   }
 }
 
-@keyframes aura-cyan {
+@keyframes success-cyan {
   0% {
     box-shadow: 0 0 1px 1px var(--cyan-glow);
   }
@@ -115,7 +132,7 @@ select:focus {
   }
 }
 
-@keyframes glowing-cyan {
+@keyframes glory-cyan {
   0% {
     box-shadow: 0 0 0 0 var(--cyan-glow);
   }
@@ -127,7 +144,7 @@ select:focus {
   }
 }
 
-@keyframes aura-gold {
+@keyframes success-gold {
   0% {
     box-shadow: 0 0 1px 1px var(--gold-glow);
   }
@@ -139,7 +156,7 @@ select:focus {
   }
 }
 
-@keyframes glowing-gold {
+@keyframes glory-gold {
   0% {
     box-shadow: 0 0 0 0 var(--gold-glow);
   }
