@@ -28,6 +28,7 @@ import Marked from "marked-react";
 import FormSelect from "react-bootstrap/FormSelect";
 import FormCheck from "react-bootstrap/FormCheck";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const components = {
   Div: ({ children, ...props }: UI.DivProps) => (
@@ -97,6 +98,18 @@ const components = {
   ),
   Button: ({ children, ...props }: UI.ButtonProps) => (
     <Button {...props}>{children}</Button>
+  ),
+  Dropdown: ({ label, items, action, ...props }: UI.DropdownProps) => (
+    <Dropdown {...props}>
+      <Dropdown.Toggle variant="secondary">{label}</Dropdown.Toggle>
+      <Dropdown.Menu>
+        {items.map(({ id, label }) => (
+          <Dropdown.Item key={id} onClick={() => action(id)}>
+            {label}
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
   ),
   ListGroup: ({ children, ...props }: UI.ListGroupProps) => (
     <ListGroup {...props}>{children}</ListGroup>
