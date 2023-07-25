@@ -24,11 +24,8 @@ const Wrapper = () => {
   return (
     <React.StrictMode>
       <Contexts.FrontendProvider
-        serverUrl={process.env.REACT_APP_SERVER_URL!}
-        apiBaseUrl={
-          process.env.REACT_APP_SERVER_URL! +
-          process.env.REACT_APP_API_BASE_URL!
-        }
+        serverUrl={"/"}
+        apiBaseUrl={process.env.REACT_APP_API_BASE_URL!}
         components={components}
         orientation={orientation}
       >
