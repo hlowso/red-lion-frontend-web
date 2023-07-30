@@ -176,6 +176,9 @@ const components = {
   FormCheck: ({ ...props }: UI.FormCheckProps) => (
     <FormCheck {...props} type="checkbox" />
   ),
+  FormRadio: ({ ...props }: UI.FormRadioProps) => (
+    <FormCheck {...props} type="radio" />
+  ),
   Icon: ({ name, ...props }: UI.IconProps) => {
     const BootstrapIcon = icons[(name as keyof typeof icons) || "Question"];
     return BootstrapIcon ? <BootstrapIcon {...props} /> : null;
