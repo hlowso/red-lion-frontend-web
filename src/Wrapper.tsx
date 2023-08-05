@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Contexts, App } from "frontend-common";
 import { useEffect } from "react";
 import components from "./components";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 type Orientation = "landscape" | "portrait";
 
@@ -27,6 +28,7 @@ const Wrapper = () => {
         serverUrl={"/"}
         apiBaseUrl={process.env.REACT_APP_API_BASE_URL!}
         components={components}
+        dndBackend={HTML5Backend}
         orientation={orientation}
       >
         <App />
