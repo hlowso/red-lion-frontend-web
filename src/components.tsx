@@ -114,9 +114,13 @@ const components = {
   ListGroup: ({ children, ...props }: UI.ListGroupProps) => (
     <ListGroup {...props}>{children}</ListGroup>
   ),
-  ListGroupItem: ({ children, ...props }: UI.ListGroupItemProps) => (
-    <ListGroupItem {...props}>{children}</ListGroupItem>
-  ),
+  ListGroupItem: forwardRef(
+    ({ children, ...props }: UI.ListGroupItemProps, ref) => (
+      <ListGroupItem ref={ref as React.Ref<HTMLDivElement>} {...props}>
+        {children}
+      </ListGroupItem>
+    )
+  ) as (props: UI.ListGroupItemProps) => JSX.Element,
   Toast: ({ children, ...props }: UI.ToastProps) => (
     <Toast {...props} show delay={7000} autohide>
       {children}
