@@ -10,6 +10,7 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "bootstrap": "^5.3.2",
     "classnames": "^2.3.2",
     "frontend-common": "file:../frontend-common",
     "marked-react": "^1.4.0",
@@ -26,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "bootstrap": "npm i --save bootstrap && mkdir -p ./public/css && cp ./node_modules/bootstrap/dist/css/bootstrap.min.css ./public/css/"
   },
   "eslintConfig": {
     "extends": [
