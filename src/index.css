@@ -11,8 +11,10 @@ body {
 }
 
 .list-nav {
-  width: 200px;
+  min-width: 200px;
   height: 100%;
+  overflow-y: scroll;
+  height: 60vh;
 }
 
 .tooltip.show {
